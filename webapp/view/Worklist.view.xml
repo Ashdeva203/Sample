@@ -1,0 +1,156 @@
+<mvc:View controllerName="list.controller.Worklist" xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<html:style>
+		.mySuperRedButton { background-color:skyblue; }
+	</html:style>
+	<semantic:FullscreenPage id="page" title="{i18n>worklistViewTitle}">
+		<semantic:content>
+			<Panel expandable="true" expanded="true" width="auto" class="mySuperRedButton">
+				<headerToolbar>
+					<Toolbar height="3rem">
+						<Title text="Challan Entry Form"/>
+					</Toolbar>
+				</headerToolbar>
+				<f:SimpleForm id="formdetails1" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+					labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+					<f:content>
+						<core:Title text=""/>
+						<Label id="paycategory" text="Payer Category"/>
+						<Select id="selcategory" items="{sample>/Category}" change="selectionchange">
+							<core:ListItem key="{sample>categry}" text="{sample>categry}"/>
+						</Select>
+						<core:Title text=""/>
+						<Label id="challandate" text="Date of Challan"/>
+						<Input value="{sample>/formdetails/0/Dchallan}" enabled="false"></Input>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<Panel expandable="true" expanded="true" width="auto" class="sapUiResponsiveMargin">
+				<headerToolbar>
+					<Toolbar height="3rem">
+						<Title text="{i18n>Deptdetails}"/>
+					</Toolbar>
+				</headerToolbar>
+				<f:SimpleForm id="SimpleFormChangeaddres" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+					labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+					<f:content>
+						<core:Title text=""/>
+						<Label id="label" text="District"/>
+						<Select id="seldistrict" items="{sample>/District}" change="selectionchange">
+							<core:ListItem key="{sample>city}" text="{sample>city}"/>
+						</Select>
+						<Label id="label1" text="DDO Office"/>
+						<Select id="selddo" items="{sample>/DDO_ofc}" change="ofcchange">
+							<core:ListItem key="{sample>ofc}" text="{sample>ofc}"/>
+						</Select>
+						<core:Title text=""/>
+						<Label id="label3" text="Treasury"/>
+						<Select id="seltreasury" items="{sample>/Mandal}" change="ofcchange">
+							<core:ListItem key="{sample>Mandalofc}" text="{sample>Mandalofc}"/>
+						</Select>
+						<Label id="label4" text="DDO Code"/>
+						<Input value="{sample>/formdetails/0/ddo}" enabled="false"/>
+						<Label id="label7" text="Designation"/>
+						<Input value="{sample>/formdetails/0/Degination}" enabled="false"/>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>Servicedetails}" width="auto" class="sapUiResponsiveMargin">
+				<f:SimpleForm id="servicedetails" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+					labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+					<f:content>
+						<core:Title text=""/>
+						<Label id="servicemajor" text="Source HOA"/>
+						<Input value="{sample>/formdetails/0/servicemg}"/>
+						<core:Title text=""/>
+						<Label id="hdact" text="Target HOA"/>
+						<Input value="{sample>/formdetails/0/target}" enabled="true"/>
+						<Label id="service" text="Amount"/>
+						<Input value="{sample>/formdetails/0/amount}"></Input>
+						<Label id="Tamt" text="Total Amount"/>
+						<Input value="{sample>/formdetails/0/amunt}" enabled="false"/>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<Panel expandable="true" expanded="true" headerText="{i18n>Remitterdetails}" width="auto" class="sapUiResponsiveMargin">
+				<f:SimpleForm id="remitterdetails" minWidth="1024" maxContainerCols="2" editable="true" layout="ResponsiveGridLayout" labelSpanL="4"
+					labelSpanM="4" emptySpanL="0" emptySpanM="0" columnsL="2" columnsM="2">
+					<f:content>
+						<core:Title text=""/>
+						<Label id="remitterddoc" text="Remitter DDO Code"/>
+						<Input value="{sample>/formdetails/0/remittercode}"/>
+						<Label id="designation" text="Designation"/>
+						<Input value="{sample>/formdetails/0/desg}" enabled="false"/>
+						<core:Title text=""/>
+						<Label id="mobileno" text="Mobile No."/>
+						<Input value="{sample>/formdetails/0/mobileno}"></Input>
+						<Label id="purpose" text="Purpose"/>
+						<Input value="{sample>/formdetails/0/purpose1}" enabled="false"/>
+					</f:content>
+				</f:SimpleForm>
+			</Panel>
+			<!--<Table-->
+			<!--	id="table"-->
+			<!--	width="auto"-->
+			<!--	class="sapUiResponsiveMargin"-->
+			<!--	items="{-->
+			<!--		path: '/ServiceCollection',-->
+			<!--		sorter: {-->
+			<!--			path: 'ID',-->
+			<!--			descending: false-->
+			<!--		}-->
+			<!--	}"-->
+			<!--	noDataText="{worklistView>/tableNoDataText}"-->
+			<!--	busyIndicatorDelay="{worklistView>/tableBusyDelay}"-->
+			<!--	growing="true"-->
+			<!--	growingScrollToLoad="true"-->
+			<!--	updateFinished="onUpdateFinished">-->
+			<!--	<headerToolbar>-->
+			<!--		<Toolbar>-->
+			<!--			<Title id="tableHeader" text="{worklistView>/worklistTableTitle}"/>-->
+			<!--			<ToolbarSpacer />-->
+			<!--			<SearchField-->
+			<!--				id="searchField"-->
+			<!--				tooltip="{i18n>worklistSearchTooltip}"-->
+			<!--				search="onSearch"-->
+			<!--				width="auto">-->
+			<!--			</SearchField>-->
+			<!--		</Toolbar>-->
+			<!--	</headerToolbar>-->
+			<!--	<columns>-->
+			<!--		<Column id="nameColumn">-->
+			<!--			<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>-->
+			<!--		</Column>-->
+			<!--		<Column id="unitNumberColumn" hAlign="End">-->
+			<!--			<Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>-->
+			<!--		</Column>-->
+			<!--	</columns>-->
+			<!--	<items>-->
+			<!--		<ColumnListItem-->
+			<!--			type="Navigation"-->
+			<!--			press="onPress">-->
+			<!--			<cells>-->
+			<!--				<ObjectIdentifier-->
+			<!--					title="{ID}"/>-->
+			<!--				<ObjectNumber-->
+			<!--					number="{-->
+			<!--						path: 'TechnicalServiceVersion',-->
+			<!--						formatter: '.formatter.numberUnit'-->
+			<!--					}"/>-->
+			<!--			</cells>-->
+			<!--		</ColumnListItem>-->
+			<!--	</items>-->
+			<!--</Table>-->
+		</semantic:content>
+		<!--<footer>-->
+		<!--	<Bar>-->
+		<!--		<contentRight>-->
+		<!-- <Button class="mySuperRedButton"-->
+		<!--            text="Say hello"-->
+		<!--            press="onShowHello"/>	-->
+		<!--	</contentRight>-->
+		<!--	</Bar>-->
+		<!--</footer>-->
+	</semantic:FullscreenPage>
+</mvc:View>
